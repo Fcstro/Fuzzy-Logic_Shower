@@ -2,35 +2,35 @@
 
 # Define Fuzzy Sets
 
-## Inputs:
+# Inputs:
 
-# INITIAL WATER TEMP 
+## INITIAL WATER TEMP 
 -  Cold Water: 2°C - 20°C
 - Mid-Temperature Water: 17°C - 35°C
 - Warm Water: 32°C - 50°C
 
 
-# WATER PRESSURE
+## WATER PRESSURE
 - Low Pressure: 20-45 psi
 - Mid Pressure: 40-65 psi
 - High Pressure: 60-85 psi
 
 
-# HEATER TEMP
+## HEATER TEMP
 - Low Heater Temperature: 0°C - 25°C
 - Mid Heater Temperature: 20°C - 45°C
 - High Heater Temperature: 35°C - 60°C
 
-## Outputs:
+# Outputs:
 
-# SHOWER WATER
+## SHOWER WATER
 - Cold: Below 10°C
 - Chilly: 10°C - 20°C
 - Mid: 20°C - 30°C
 - Warm: 30°C - 40°C
 - Hot: 40°C - 50°C
 
-## Fuzzy Rules
+# Fuzzy Rules
 
 - If Initial Water Temp is Cold and Water Pressure is Low and Heater Temp is Low, then Shower Water is Cold.
 
