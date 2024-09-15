@@ -1,94 +1,69 @@
-# Fuzzy-Logic_Shower
+# Fuzzy Logic Rules for Heater Control System
 
-# Fuzzy Sets
+## Fuzzy Sets
 
- - # Inputs:
+### Initial Water Temperature
+- **Cold Water:** 4°C - 18°C
+- **Mid-Temperature Water:** 15°C - 30°C
+- **Warm Water:** 27°C - 46°C
 
-     ### INITIAL WATER TEMP 
-    -  Cold Water: 2°C - 20°C
-    - Mid-Temperature Water: 17°C - 35°C
-    - Warm Water: 32°C - 50°C
+### Water Pressure
+- **Low Pressure:** 20 - 45 psi
+- **Mid Pressure:** 40 - 65 psi
+- **High Pressure:** 60 - 85 psi
 
+### Heater Heat
+- **Low Heater Temperature:** OFF - 22°C
+- **Mid Heater Temperature:** 20°C - 27°C
+- **High Heater Temperature:** 25°C - 32°C
 
-     ## WATER PRESSURE
-    - Low Pressure: 20-45 psi
-    - Mid Pressure: 40-65 psi
-    - High Pressure: 60-85 psi
+### Shower Water Temperature
+- **Cold:** below 15°C
+- **Chilly:** 16°C - 20°C
+- **Mid:** 21°C - 30°C
+- **Warm:** 31°C - 40°C
+- **Hot:** 41°C - 50°C
 
+## Fuzzy Logic Rules
 
-     ## HEATER TEMP
-    - Low Heater Temperature: 0°C - 25°C
-    - Mid Heater Temperature: 20°C - 45°C
-    - High Heater Temperature: 35°C - 60°C
-    ---
-    ---
-  - # Outputs:
+### When the heater is OFF (below 15°C heater temperature):
+- **If Initial Water Temperature is Cold and Pressure is Low:** Shower Water Temperature = Cold
+- **If Initial Water Temperature is Cold and Pressure is Mid:** Shower Water Temperature = Chilly
+- **If Initial Water Temperature is Cold and Pressure is High:** Shower Water Temperature = Mid
+- **If Initial Water Temperature is Mid and Pressure is Low:** Shower Water Temperature = Chilly
+- **If Initial Water Temperature is Mid and Pressure is Mid:** Shower Water Temperature = Mid
+- **If Initial Water Temperature is Mid and Pressure is High:** Shower Water Temperature = Warm
+- **If Initial Water Temperature is Warm and Pressure is Low:** Shower Water Temperature = Mid
+- **If Initial Water Temperature is Warm and Pressure is Mid:** Shower Water Temperature = Warm
+- **If Initial Water Temperature is Warm and Pressure is High:** Shower Water Temperature = Hot
 
-     ## SHOWER WATER
-    - Cold: Below 10°C
-    - Chilly: 10°C - 20°C
-    - Mid: 20°C - 30°C
-    - Warm: 30°C - 40°C
-    - Hot: 40°C - 50°C
----
----
-# Fuzzy Rules
+### When the heater is at Low Temperature (22°C):
+- **If Initial Water Temperature is Cold and Pressure is Low:** Shower Water Temperature = Chilly
+- **If Initial Water Temperature is Cold and Pressure is Mid:** Shower Water Temperature = Mid
+- **If Initial Water Temperature is Cold and Pressure is High:** Shower Water Temperature = Warm
+- **If Initial Water Temperature is Mid and Pressure is Low:** Shower Water Temperature = Mid
+- **If Initial Water Temperature is Mid and Pressure is Mid:** Shower Water Temperature = Warm
+- **If Initial Water Temperature is Mid and Pressure is High:** Shower Water Temperature = Hot
+- **If Initial Water Temperature is Warm and Pressure is Low:** Shower Water Temperature = Warm
+- **If Initial Water Temperature is Warm and Pressure is Mid:** Shower Water Temperature = Hot
+- **If Initial Water Temperature is Warm and Pressure is High:** Shower Water Temperature = Hot
 
-- ## Conditions
+### When the heater is at Mid Temperature (27°C):
+- **If Initial Water Temperature is Cold and Pressure is Low:** Shower Water Temperature = Mid
+- **If Initial Water Temperature is Cold and Pressure is Mid:** Shower Water Temperature = Warm
+- **If Initial Water Temperature is Cold and Pressure is High:** Shower Water Temperature = Warm
+- **If Initial Water Temperature is Mid and Pressure is Low:** Shower Water Temperature = Warm
+- **If Initial Water Temperature is Mid and Pressure is Mid:** Shower Water Temperature = Hot
+- **If Initial Water Temperature is Mid and Pressure is High:** Shower Water Temperature = Hot
+- **If Initial Water Temperature is Warm and Pressure is Low:** Shower Water Temperature = Hot
+- **If Initial Water Temperature is Warm and Pressure is Mid:** Shower Water Temperature = Hot
+- **If Initial Water Temperature is Warm and Pressure is High:** Shower Water Temperature = Hot
 
-    ---
-  ### 1. IF Initial Water Temp is Cold
-    ---
-    - **And Water Pressure is Low**
-    - WHILE Heater Temp is Low THEN Shower Water is Cold
-    - WHILE Heater Temp is Mid THEN Shower Water is Chilly
-    - WHILE Heater Temp is High THEN Shower Water is Mid
-
-    - **And Water Pressure is Mid**
-    - WHILE Heater Temp is Low THEN Shower Water is Chilly
-    - WHILE Heater Temp is Mid THEN Shower Water is Mid
-    - WHILE Heater Temp is High THEN Shower Water is Warm
-
-    - **And Water Pressure is High**
-    - WHILE Heater Temp is Low THEN Shower Water is Chilly
-    - WHILE Heater Temp is Mid THEN Shower Water is Warm
-    - WHILE Heater Temp is High THEN Shower Water is Hot
-    ---
-    ---
-    ### 2. IF Initial Water Temp is Mid-Temperature
-    ---
-    - **And Water Pressure is Low**
-    - WHILE Heater Temp is Low THEN Shower Water is Chilly
-    - WHILE Heater Temp is Mid THEN Shower Water is Mid
-    - WHILE Heater Temp is High THEN Shower Water is Warm
-
-    - **And Water Pressure is Mid**
-    - WHILE Heater Temp is Low THEN Shower Water is Mid
-    - WHILE Heater Temp is Mid THEN Shower Water is Warm
-    - WHILE Heater Temp is High THEN Shower Water is Hot
-
-    - **And Water Pressure is High**
-    - WHILE Heater Temp is Low THEN Shower Water is Mid
-    - WHILE Heater Temp is Mid THEN Shower Water is Hot
-    - WHILE Heater Temp is High THEN Shower Water is Hot
-    ---
-    ---
-    ### 3. IF Initial Water Temp is Warm
-    ---
-
-    - **And Water Pressure is Low**
-    - WHILE Heater Temp is Low THEN Shower Water is Mid
-    - WHILE Heater Temp is Mid THEN Shower Water is Warm
-    - WHILE Heater Temp is High THEN Shower Water is Hot
-
-    - **And Water Pressure is Mid**
-    - WHILE Heater Temp is Low THEN Shower Water is Warm
-    - WHILE Heater Temp is Mid THEN Shower Water is Hot
-    - WHILE Heater Temp is High THEN Shower Water is Hot
-
-    - **And Water Pressure is High**
-    - WHILE Heater Temp is Low THEN Shower Water is Warm
-    - WHILE Heater Temp is Mid THEN Shower Water is Hot
-    - WHILE Heater Temp is High THEN Shower Water is Hot
-    ---
----
+### When the heater is at High Temperature (32°C):
+- **If Initial Water Temperature is Cold and Pressure is Low:** Shower Water Temperature = Warm
+- **If Initial Water Temperature is Cold and Pressure is Mid:** Shower Water Temperature = Warm
+- **If Initial Water Temperature is Cold and Pressure is High:** Shower Water Temperature = Hot
+- **If Initial Water Temperature is Mid and Pressure is Low:** Shower Water Temperature = Hot
+- **If Initial Water Temperature is Mid and Pressure is Mid:** Shower Water Temperature = Hot
+- **If Initial Water Temperature is Mid and Pressure is High:** Shower Water Temperature = Hot
+- **If Initial Water Temperature is Warm and Pressure is Low:** Shower Water Temperature = Hot
