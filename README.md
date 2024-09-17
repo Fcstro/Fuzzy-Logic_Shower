@@ -33,9 +33,8 @@ Here's a simplified version of the fuzzy logic system for your Tkinter applicati
 ### Shower Water Temperature
 - **Cold**: Below 15°C
 - **Chilly**: 15°C - 25°C
-- **Cool**: 20°C - 30°C
-- **Mid**: 25°C - 35°C
-- **Warm**: 30°C - 49°C
+- **Mid**: 26°C - 35°C
+- **Warm**: 36°C - 49°C
 - **Hot**: 50°C and above
 ---
 ---
@@ -43,13 +42,15 @@ Here's a simplified version of the fuzzy logic system for your Tkinter applicati
 ---
  ### 1. When the Heater is Off (Heater Temp < 15°C):
   - **Cold Water**: Shower Water Temp is **Cold**
-  - **Mid-Temperature Water**: Shower Water Temp is **Mid**
+  - **Chilly Water**: Shower Water Temp is **Chilly**
+  - **Mid Water**: Shower Water Temp is **Mid**
   - **Warm Water**: Shower Water Temp is **Warm**
+  - **Hot Water**: Shower Water Temp is **Hot**
  ---
  ### 2. When the Heater is at Low Temperature (15°C - 30°C):
   - **Cold Water** AND **Low Pressure**: Shower Water Temp is **Chilly**
-  - **Cold Water** AND **Mid Pressure**: Shower Water Temp is **Cool**
-  - **Cold Water** AND **High Pressure**: Shower Water Temp is **Cool**
+  - **Cold Water** AND **Mid Pressure**: Shower Water Temp is **Cold**
+  - **Cold Water** AND **High Pressure**: Shower Water Temp is **Cold**
   - **Mid-Temperature Water** AND **Low Pressure**: Shower Water Temp is **Warm**
   - **Mid-Temperature Water** AND **Mid Pressure**: Shower Water Temp is **Mid**
   - **Mid-Temperature Water** AND **High Pressure**: Shower Water Temp is **Warm**
